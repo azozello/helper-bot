@@ -1,0 +1,9 @@
+{
+  "telegram": {
+    "key": "TELEGRAM_API_KEY"
+  },
+  "liqPay": {
+    "public": "LIQ_PAY_PUBLIC",
+    "private": "LIQ_PAY_PRIVATE"
+  }
+}

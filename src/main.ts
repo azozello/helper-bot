@@ -1,11 +1,28 @@
-import express from 'express';
+import mongoose from 'mongoose'
 
-const app: express.Application = express()
+import {startBot} from './bot'
 
-app.get('/', function (req, res) {
-    res.send('Hello World! + 3')
-})
 
-app.listen(3000, function () {
-    console.log('App is listening on port 3000!')
-})
+const DB_URL = 'mongodb://localhost/helper'
+
+
+// TODO: 1) Migrate to typescript [DONE]
+// TODO: 2) Add language support
+// TODO: 3) Add the possibility to mark am order as payed
+// TODO: 4) Add the possibility to send code to the client
+// TODO: 5) Deploy to my GCC.
+
+// TODO: Optional - add github actions.
+// TODO: Optional - add logger.
+// TODO: Optional - add encrypt database.
+const startApp = () => {
+    return Promise.all([
+        mongoose.connect(DB_URL),
+        startBot()
+    ])
+}
+
+
+startApp()
+    .then(() => console.log('Bot started'))
+    .catch((reason) => console.error(reason))

@@ -1,0 +1,9 @@
+{
+  "telegram": {
+    "key": "key"
+  },
+  "liqPay": {
+    "public": "public",
+    "private": "private"
+  }
+}

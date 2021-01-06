@@ -171,9 +171,13 @@ const DB_URL = 'mongodb://localhost/helper'
 
 // TODO: 1) Migrate to typescript [DONE]
 // TODO: 2) Add language support [DONE]
-// TODO: 3) Add the possibility to mark an order as payed
-// TODO: 4) Add the possibility to send code to the client
-// TODO: 5) Deploy to my GCC.
+// TODO: 3) Add the possibility to mark an order as payed [DONE]
+// TODO: 4) Add the possibility to send code to the client [DONE]
+// TODO: 5) Send added file to user
+// TODO: 6) Add translations
+// TODO: 7) Order list
+// TODO: 8) Delete message
+// TODO: 9) Deploy to my GCC
 
 // TODO: Optional - add github actions.
 // TODO: Optional - add logger.

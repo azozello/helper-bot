@@ -32,4 +32,10 @@ const getOrderById = async (id: number) => {
   return order
 }
 
-export {createOrder, markOrderAsPayed, addFileToOrder, getOrderById}
+const getOrdersByUserId = async (userId: number) => {
+  const orders = await OrderModel.find({userId})
+  return orders
+}
+
+
+export {createOrder, markOrderAsPayed, addFileToOrder, getOrderById, getOrdersByUserId}

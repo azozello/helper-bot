@@ -12,6 +12,7 @@ import {doSetLanguage} from "./controllers/api/language"
 import {UserRole} from "./user-roles"
 import {saveTaskSolution} from "./controllers/files/files"
 import {doCreateOrder} from "./controllers/api/order"
+import {showOrdersMenu} from "./controllers/ui/show-orders"
 
 
 const initApiCallback = (controllers: any) => async (request: any) => {
@@ -24,7 +25,7 @@ const initUICallback = (bot: TelegramBot) => async (rawRequest: any) => {
   const request = await composedEnhancers(rawRequest)
   const {text} = request
 
-  if (request.document && request.caption) {
+  if (request.document && request.caption && request.user.role === UserRole.ADMIN) {
     saveTaskSolution(bot)(request)
   } else if (text && typeof text === 'string' && text.startsWith('/')) {
     showMainMenu(bot)(request)
@@ -37,6 +38,7 @@ const initUICallback = (bot: TelegramBot) => async (rawRequest: any) => {
 const initControllers = (bot: TelegramBot) => {
   const composedControllers = composeAsync(
     mapController(ROOTS.SHOW_SUBJECTS, showSubjectMenu(bot)),
+    mapController(ROOTS.SHOW_ORDERS, showOrdersMenu(bot)),
     mapController(ROOTS.SHOW_TASKS, showTaskMenu(bot)),
     mapController(ROOTS.SHOW_TASK_DETAILS, showTaskDetail(bot)),
     mapController(ROOTS.SHOW_MAIN_MENU, showMainMenu(bot)),

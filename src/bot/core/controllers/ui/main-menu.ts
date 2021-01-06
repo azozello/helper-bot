@@ -6,9 +6,9 @@ import {Languages} from "../../../translator/languages"
 import {ROOTS} from "../../router/roots"
 
 
-const showMainMenu = (bot: TelegramBot) => async ({from, message, language}: any) => {
-  const {chatId} = unwrapIds(from, message)
-  const translated = getTranslator(language || Languages.ENG)
+const showMainMenu = (bot: TelegramBot) => async ({from, message, user, chat}: any) => {
+  const {chatId} = unwrapIds(from, message, chat)
+  const translated = getTranslator(user.language || Languages.ENG)
 
   const form = createButtonsForm([
     createButton({text: 'main.subjects', action: ROOTS.SHOW_SUBJECTS}),

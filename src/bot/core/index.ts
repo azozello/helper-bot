@@ -9,6 +9,9 @@ import {showTaskDetail} from "./controllers/ui/task-detail"
 import {showLanguageMenu} from "./controllers/ui/language"
 import {showMainMenu} from "./controllers/ui/main-menu"
 import {composeAsync} from "../utils"
+import {doSetLanguage} from "./controllers/api/language"
+import {doCreateOrder} from "./controllers/api/order"
+import {saveTaskSolution} from "./controllers/files/files"
 
 
 const initApiCallback = (controllers: any) => async (request: any) => {
@@ -17,13 +20,17 @@ const initApiCallback = (controllers: any) => async (request: any) => {
 }
 
 
-const initUICallback = (bot: TelegramBot) => async (request: any) => {
-  const {chat} = await composedEnhancers(request)
+const initUICallback = (bot: TelegramBot) => async (rawRequest: any) => {
+  const request = await composedEnhancers(rawRequest)
+  const {text} = request
 
-  const buttons = [createButton({text: 'Back to subjects', action: 'ui/subjects'})]
-  const form = createButtonsForm(buttons)
-
-  await bot.sendMessage(chat.id, 'Select tasks', form)
+  if (request.document && request.caption) {
+    saveTaskSolution(bot)(request)
+  } else if (text && typeof text === 'string' && text.startsWith('/')) {
+    showMainMenu(bot)(request)
+  } else {
+    console.log('Hello')
+  }
 }
 
 
@@ -34,6 +41,9 @@ const initControllers = (bot: TelegramBot) => {
     mapController(ROOTS.SHOW_TASK_DETAILS, showTaskDetail(bot)),
     mapController(ROOTS.SHOW_MAIN_MENU, showMainMenu(bot)),
     mapController(ROOTS.SHOW_LANGUAGE_MENU, showLanguageMenu(bot)),
+
+    mapController(ROOTS.DO_SET_LANGUAGE, doSetLanguage(bot)),
+    mapController(ROOTS.DO_CREATE_ORDER, doCreateOrder(bot))
   )
 
   bot.on('callback_query', initApiCallback(composedControllers))

@@ -17,7 +17,7 @@ const showTaskDetail = (bot: TelegramBot) => async ({from, message, data, langua
   const form = createButtonsForm([
     createButton({
       text: translated('tasks.details.order'),
-      action: `${ROOTS.SHOW_TASKS}?subject=${subjectId}`
+      action: `${ROOTS.DO_CREATE_ORDER}?taskId=${taskId}`
     }),
     createButton({
       text: translated('tasks.details.back'),

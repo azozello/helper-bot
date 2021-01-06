@@ -1,8 +1,7 @@
 import {createUser, getUserByTelegramId} from './user/methods'
-import {UserApi} from "./api";
 
 
-const userApi: UserApi = {createUser, getUserByTelegramId}
+const userApi = {createUser, getUserByTelegramId}
 const subjectApi = {}
 
 

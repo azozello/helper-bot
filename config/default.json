@@ -1,6 +1,8 @@
 {
   "telegram": {
-    "key": "key"
+    "key": "key",
+    "admins": "[1, 2]",
+    "root": "/"
   },
   "liqPay": {
     "public": "public",

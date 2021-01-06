@@ -4,36 +4,42 @@ import joi from 'joi'
 
 const userSchema = new mongoose.Schema({
   telegramId: {
-    type: String,
+    type: Number,
     required: true,
     unique: true
   },
-  credentials: [{
-    login: {
-      type: String
-    },
-    password: {
-      type: String
-    }
-  }],
-  lastUsedCredential: {
+  firstName: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  language: {
     type: Number,
     required: true
-  }
+  },
+  role: {
+    type: Number,
+    required: true
+  },
 })
 
 const userSchemaValidator = joi.object({
   telegramId: joi.number().required(),
-  credentials: joi.array().required(),
-  lastUsedCredential: joi.number().required()
+  language: joi.number().required(),
+  role: joi.number().required(),
+  firstName: joi.string().required(),
+  username: joi.string().required()
 })
 
 
-const User = mongoose.model('users', userSchema)
+const UserModel = mongoose.model('users', userSchema)
 
 const validateUser = (user: any): any => {
   return userSchemaValidator.validate(user)
 }
 
 
-export {User, validateUser}
+export {UserModel, validateUser}

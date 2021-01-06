@@ -5,8 +5,9 @@ const composeAsync = (...funcs: any[]) => (value: any) => funcs.reduceRight(
   Promise.resolve(value)
 )
 
-const unwrapIds = (from: any, message: any) => {
-  const chatId = message.chat.id
+const unwrapIds = (from: any, message: any, chat?: any) => {
+  console.log(from, message, chat)
+  const chatId = message ? message.chat.id : chat.id
   const userId = from.id
 
   return {chatId, userId}

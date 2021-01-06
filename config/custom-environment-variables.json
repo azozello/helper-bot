@@ -1,6 +1,8 @@
 {
   "telegram": {
-    "key": "TELEGRAM_API_KEY"
+    "key": "TELEGRAM_API_KEY",
+    "admins": "TELEGRAM_ADMIN_IDS",
+    "root": "TELEGRAM_FILES_ROOT"
   },
   "liqPay": {
     "public": "LIQ_PAY_PUBLIC",

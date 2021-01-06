@@ -3,15 +3,15 @@ import {ROOTS} from "./router/roots"
 import {showSubjectMenu} from "./controllers/ui/select-subject"
 import {showTaskMenu} from "./controllers/ui/select-task"
 import {mapController} from "./router/router"
-import {createButton, createButtonsForm} from "./markup"
 import {composedEnhancers} from "./request-enhancers"
 import {showTaskDetail} from "./controllers/ui/task-detail"
 import {showLanguageMenu} from "./controllers/ui/language"
 import {showMainMenu} from "./controllers/ui/main-menu"
 import {composeAsync} from "../utils"
 import {doSetLanguage} from "./controllers/api/language"
-import {doCreateOrder} from "./controllers/api/order"
+import {UserRole} from "./user-roles"
 import {saveTaskSolution} from "./controllers/files/files"
+import {doCreateOrder} from "./controllers/api/order"
 
 
 const initApiCallback = (controllers: any) => async (request: any) => {
@@ -24,7 +24,7 @@ const initUICallback = (bot: TelegramBot) => async (rawRequest: any) => {
   const request = await composedEnhancers(rawRequest)
   const {text} = request
 
-  if (request.document && request.caption) {
+  if (request.document && request.caption && request.user.role === UserRole.ADMIN) {
     saveTaskSolution(bot)(request)
   } else if (text && typeof text === 'string' && text.startsWith('/')) {
     showMainMenu(bot)(request)

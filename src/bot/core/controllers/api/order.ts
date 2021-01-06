@@ -9,7 +9,7 @@ const doCreateOrder = (bot: TelegramBot) => async (request: any) => {
 
   const translated = getTranslator(user.language || Languages.ENG)
 
-  const {userId} = unwrapIds(from, message)
+  const {chatId, userId} = unwrapIds(from, message)
   const taskId = getUrlParameter(data || '', 'taskId')
 
   const newOrder = await createOrder({
@@ -17,6 +17,8 @@ const doCreateOrder = (bot: TelegramBot) => async (request: any) => {
     timestamp: Date.now(),
     isPayed: false,
   })
+
+  await bot.sendMessage(chatId, `${translated('order.created')} : ${newOrder._id}`)
   return await bot.answerCallbackQuery({
     callback_query_id: id,
     text: `${translated('order.created')} : ${newOrder._id}`,

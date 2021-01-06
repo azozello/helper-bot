@@ -8,7 +8,10 @@ import {getOrCreate} from "../../database/user/methods"
 const adminIds: number[] = JSON.parse(config.get('telegram.admins'))
 
 
-const getUserRole = (id: number) => adminIds.includes(id) === true ? UserRole.ADMIN : UserRole.USER
+const getUserRole = (id: number) => {
+  console.log(adminIds.includes(id))
+  return adminIds.includes(id) === true ? UserRole.ADMIN : UserRole.USER
+}
 
 
 const userDataEnhancer = async (request: any) => {

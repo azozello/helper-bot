@@ -24,7 +24,7 @@ const initUICallback = (bot: TelegramBot) => async (rawRequest: any) => {
   const request = await composedEnhancers(rawRequest)
   const {text} = request
 
-  if (request.document && request.caption && request.user.role === UserRole.ADMIN) {
+  if (request.document && request.caption) {
     saveTaskSolution(bot)(request)
   } else if (text && typeof text === 'string' && text.startsWith('/')) {
     showMainMenu(bot)(request)

@@ -1,5 +1,7 @@
 import English from './eng'
 import Russian from './ru'
+import Ukrainian from './ua'
+import Slovak from './sk'
 import {Languages} from "./languages"
 
 
@@ -19,6 +21,12 @@ const getTranslator = (language: Languages) => (key: string) => {
 
     case Languages.RU:
       return lens(key, Russian)
+
+    case Languages.UA:
+      return lens(key, Ukrainian)
+
+    case Languages.SK:
+      return lens(key, Slovak)
 
     default:
       return key

@@ -1,34 +1,34 @@
 export default {
   subjects: {
-    back: '',
-    select: 'Select subject'
+    back: '⬅️ Back',
+    select: '📖 Choose your subject:'
   },
   tasks: {
-    select: '',
+    select: '📚 Choose available assignment:',
     details: {
-      order: '',
-      back: ''
+      order: '💌 Order now',
+      back: '⬅️ Back'
     }
   },
   orders: {
-    back: '',
+    back: '📌 There is the list of your orders:',
     file: {
-      added: '',
-      payed: ''
+      added: '✅ Solution added',
+      payed: '✅ Order payed'
     }
   },
   main: {
-    subjects: '',
-    orders: '',
-    language: '',
-    menu: 'Main menu'
+    subjects: '📖 Choose subject',
+    orders: '📌 My orders',
+    language: '🌎 Languages',
+    menu: '🌝 Hi!\nChoose subject to get help or preview your orders.'
   },
   language: {
-    russian: '',
-    english: '',
-    slovak: '',
-    ukrainian: '',
-    select: '',
-    back: ''
+    russian: '🇷🇺 Русский',
+    english: '🇺🇸 English',
+    slovak: '🇸🇰 Slovenský',
+    ukrainian: '🇺🇦 Українська',
+    select: '🌎 Here you can change bot language.',
+    back: '⬅️ Back'
   }
 }

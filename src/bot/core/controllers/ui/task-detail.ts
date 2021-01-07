@@ -6,10 +6,10 @@ import {Languages} from "../../../translator/languages"
 import {ROOTS} from "../../router/roots"
 
 
-const showTaskDetail = (bot: TelegramBot) => async ({from, message, data, language}: any) => {
+const showTaskDetail = (bot: TelegramBot) => async ({from, message, data, user}: any) => {
   const {chatId} = unwrapIds(from, message)
 
-  const translated = getTranslator(language || Languages.ENG)
+  const translated = getTranslator(user.language || Languages.ENG)
 
   const subjectId: string = getUrlParameter(data || '', 'subject')
   const taskId: string = getUrlParameter(data || '', 'task')

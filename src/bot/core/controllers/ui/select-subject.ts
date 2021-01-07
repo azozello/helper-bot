@@ -45,13 +45,13 @@ const mapSubjectToButton = (subject: Subject) => {
 }
 
 
-const showSubjectMenu = (bot: TelegramBot) => async ({from, message, language}: any) => {
+const showSubjectMenu = (bot: TelegramBot) => async ({from, message, user}: any) => {
   const {chatId} = unwrapIds(from, message)
-  const translated = getTranslator(language || Languages.ENG)
+  const translated = getTranslator(user.language || Languages.ENG)
 
   const buttons = [
     ...getSubjects().map(mapSubjectToButton),
-    createButton({text: 'subjects.back', action: ROOTS.SHOW_MAIN_MENU})
+    createButton({text: translated('subjects.back'), action: ROOTS.SHOW_MAIN_MENU})
   ]
   const form = createButtonsForm(buttons)
 

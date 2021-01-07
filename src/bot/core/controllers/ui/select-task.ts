@@ -58,14 +58,14 @@ const createButtonMapper = (subject: string) => (task: Task) => {
 }
 
 
-const showTaskMenu = (bot: TelegramBot) => async ({from, message, data, language}: any) => {
+const showTaskMenu = (bot: TelegramBot) => async ({from, message, data, user}: any) => {
   const {chatId} = unwrapIds(from, message)
-  const translated = getTranslator(language || Languages.ENG)
+  const translated = getTranslator(user.language || Languages.ENG)
   const subjectId: string = getUrlParameter(data || '', 'subject')
 
   const form = createButtonsForm([
     ...getTasks(subjectId).map(createButtonMapper(subjectId)),
-    createButton({text: 'tasks.details.back', action: ROOTS.SHOW_SUBJECTS})
+    createButton({text: translated('tasks.details.back'), action: ROOTS.SHOW_SUBJECTS})
   ])
 
   return await bot.sendMessage(chatId, translated('tasks.select'), form)

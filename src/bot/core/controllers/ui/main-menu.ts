@@ -11,9 +11,9 @@ const showMainMenu = (bot: TelegramBot) => async ({from, message, user, chat}: a
   const translated = getTranslator(user.language || Languages.ENG)
 
   const form = createButtonsForm([
-    createButton({text: 'main.subjects', action: ROOTS.SHOW_SUBJECTS}),
-    createButton({text: 'main.orders', action: ROOTS.SHOW_ORDERS}),
-    createButton({text: 'main.language', action: ROOTS.SHOW_LANGUAGE_MENU})
+    createButton({text: translated('main.subjects'), action: ROOTS.SHOW_SUBJECTS}),
+    createButton({text: translated('main.orders'), action: ROOTS.SHOW_ORDERS}),
+    createButton({text: translated('main.language'), action: ROOTS.SHOW_LANGUAGE_MENU})
   ])
 
   return await bot.sendMessage(chatId, translated('main.menu'), form)

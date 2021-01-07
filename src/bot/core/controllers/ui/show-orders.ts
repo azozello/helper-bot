@@ -7,9 +7,9 @@ import {ROOTS} from "../../router/roots"
 import {getOrdersByUserId} from "../../../../database/order/methods"
 
 
-const showOrdersMenu = (bot: TelegramBot) => async ({from, message, data, language}: any) => {
+const showOrdersMenu = (bot: TelegramBot) => async ({from, message, user}: any) => {
   const {chatId, userId} = unwrapIds(from, message)
-  const translated = getTranslator(language || Languages.ENG)
+  const translated = getTranslator(user.language || Languages.ENG)
 
   const orders = await getOrdersByUserId(userId)
   const ordersText = orders
@@ -17,7 +17,7 @@ const showOrdersMenu = (bot: TelegramBot) => async ({from, message, data, langua
     .reduce((acc, cur) => `${acc}${cur}`)
 
   const form = createButtonsForm([
-    createButton({text: 'orders.back', action: ROOTS.SHOW_MAIN_MENU})
+    createButton({text: translated('orders.back'), action: ROOTS.SHOW_MAIN_MENU})
   ])
 
   return await bot.sendMessage(chatId, `${translated('tasks.select')}\n${ordersText}`, form)

@@ -7,11 +7,13 @@ export default {
     select: '📚 Vybér si svoje zadanie:',
     details: {
       order: '💌 Objednáť',
-      back: '⬅️ Späť'
+      back: '⬅️ Späť',
+      info: '✅ Stlač tlačidlo dole aby objednať riešenie.'
     }
   },
   orders: {
-    back: '📌 Zoznam tvojích objednávok:',
+    back: '⬅️ Späť',
+    info: '📌 Zoznam tvojích objednávok:',
     file: {
       added: '✅ Riešenie hotové',
       payed: '✅ Objednávka zaplatená'
@@ -21,7 +23,7 @@ export default {
     subjects: '📖 Vybrať predmet',
     orders: '📌 Moje objednávky',
     language: '🌎 Jazyk',
-    menu: '🌝 Ahoj!\nVybér si predmet z akým potrebuješ pomocť, alebo pozri si svoje objednávky.'
+    menu: 'Ahoj! 🌝\nVybér si predmet z akým potrebuješ pomocť, alebo pozri si svoje objednávky.'
   },
   language: {
     russian: '🇷🇺 Русский',

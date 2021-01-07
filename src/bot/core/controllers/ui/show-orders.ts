@@ -20,7 +20,7 @@ const showOrdersMenu = (bot: TelegramBot) => async ({from, message, user}: any) 
     createButton({text: translated('orders.back'), action: ROOTS.SHOW_MAIN_MENU})
   ])
 
-  return await bot.sendMessage(chatId, `${translated('tasks.select')}\n${ordersText}`, form)
+  return await bot.sendMessage(chatId, `${translated('orders.info')}\n${ordersText}`, form)
 }
 
 

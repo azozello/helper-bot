@@ -7,11 +7,13 @@ export default {
     select: '📚 Choose available assignment:',
     details: {
       order: '💌 Order now',
-      back: '⬅️ Back'
+      back: '⬅️ Back',
+      info: '✅ You can order solution by pressing button below.'
     }
   },
   orders: {
-    back: '📌 There is the list of your orders:',
+    back: '⬅️ Back',
+    info: '📌 There is the list of your orders:',
     file: {
       added: '✅ Solution added',
       payed: '✅ Order payed'
@@ -21,7 +23,7 @@ export default {
     subjects: '📖 Choose subject',
     orders: '📌 My orders',
     language: '🌎 Languages',
-    menu: '🌝 Hi!\nChoose subject to get help or preview your orders.'
+    menu: 'Hi! 🌝\nChoose subject to get help or preview your orders.'
   },
   language: {
     russian: '🇷🇺 Русский',
